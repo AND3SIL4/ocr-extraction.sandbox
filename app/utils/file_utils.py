@@ -2,7 +2,6 @@ import os
 import uuid
 from pathlib import Path
 from typing import Optional
-import magic
 from datetime import datetime
 
 
@@ -17,11 +16,16 @@ def ensure_directory_exists(directory_path: str) -> None:
 
 
 def is_pdf_file(file_path: str) -> bool:
-    """Check if a file is a valid PDF using magic numbers."""
+    """Check if a file is a valid PDF by checking file extension and PDF header."""
     try:
-        mime = magic.Magic(mime=True)
-        file_type = mime.from_file(file_path)
-        return file_type == 'application/pdf'
+        # Check file extension
+        if not file_path.lower().endswith('.pdf'):
+            return False
+
+        # Check PDF header
+        with open(file_path, 'rb') as f:
+            header = f.read(8)
+            return header.startswith(b'%PDF-')
     except Exception:
         return False
 

@@ -19,7 +19,7 @@ uv sync
 
 2. Run the application:
 ```bash
-uv run fastapi dev
+uv run uvicorn main:app --reload --host 127.0.0.1 --port 8000
 ```
 
 The API will be available at `http://localhost:8000`

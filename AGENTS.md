@@ -3,7 +3,7 @@
 ## Build/Lint/Test Commands
 
 - **Install dependencies**: `uv sync`
-- **Run application**: `uv run fastapi dev`
+- **Run application**: `uv run uvicorn main:app --reload --host 127.0.0.1 --port 8000`
 - **Run all tests**: `uv run python -m pytest` (when tests are added)
 - **Run single test**: `uv run python -m pytest tests/test_file.py::TestClass::test_method`
 - **Lint code**: `uv run python -m flake8` (when flake8 is added)
