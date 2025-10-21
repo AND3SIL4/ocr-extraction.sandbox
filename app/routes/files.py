@@ -1,9 +1,8 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException
 from fastapi.responses import FileResponse
-from typing import Optional
 
 from app.services.file_service import FileService
-from app.models.file_models import FileUploadResponse, ErrorResponse
+from app.models.file_models import FileInfo, FileUploadResponse
 
 router = APIRouter()
 file_service = FileService()
